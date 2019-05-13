@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello-quarkus v1.0</title>
+    <style>
+        body {
+            font-size: 20px;
+            background-color: bisque;
+        }
+        h1, h2 {
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        body {
+            margin: 4em;
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        .left-column {
+            padding: 1rem;
+            max-width: 75%;
+            min-width: 55%;
+        }
+        .right-column {
+            padding: 2rem;
+            max-width: 25%;
+            color: red;
+            letter-spacing: 4px;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+        }
+        input {
+            font-size: 1rem;
+            padding: 0.2em;
+            margin: 0.5em 0;
+        }
+    </style>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+function submitForm() {
+  $.ajax({
+    type: 'POST',
+    url: '/api/persons',
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+      'name': $("#add_name").val(),
+      'surname': $("#add_surname").val()
+    }),
+    success: function(msg){
+      alert('Saved: ' + JSON.stringify(msg));
+    }
+  });
+}
+    </script>
+</head>
+<body>
+
+<h1>Hello mofo Quarkus</h1>
+
+<div class="container">
+    <div class="left-column">
+        <h2>Rest</h2>
+        <a href="/api/hello">Hello</a><br>
+
+        <h2>Persons</h2>
+        <a href="/api/persons">List all@!!!!!</a><br>
+
+        <h2>Add new person:</h2>
+        <form>
+            <input type="text" name="name" id="add_name"><br>
+            <input type="text" name="surname" id="add_surname">
+            <input type="button" onclick="submitForm(); return false;" value="Add">
+        </form>
+
+
+    </div>
+    <div class="right-column">
+        https://igo.rs
+    </div>
+</div>
+
+</body>
+</html>
